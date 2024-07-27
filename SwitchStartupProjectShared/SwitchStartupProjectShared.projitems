@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7ad421a1-7d36-4614-b5e8-9fb9671c0631</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SwitchStartupProjectShared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ActiveConfigurationLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationFileOpener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationFileTracker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\MultiProjectConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\MultiProjectConfigurationProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\DropdownEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Solution.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\SolutionProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\StartupConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DropdownService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Guids.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumerableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Paths.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WritableLaunchProfile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PkgCmdID.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StartupProjectSwitcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SwitchStartupProjectPackage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Configuration\ConfigurationSchema.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)VSPackage.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\SwitchStartupProject.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+</Project>

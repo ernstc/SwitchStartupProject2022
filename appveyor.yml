@@ -1,0 +1,19 @@
+image: Visual Studio 2019
+
+install:
+  - ps: Get-Content -Path .\appveyor_vsix.ps1 -Raw | iex
+
+before_build:
+  - ps: Vsix-IncrementVsixVersion ".\SwitchStartupProject\source.extension.vsixmanifest" | Vsix-UpdateBuildVersion
+  - ps: Vsix-IncrementVsixVersion ".\SwitchStartupProject17\source.extension.vsixmanifest"
+  - ps: Vsix-TokenReplacement SwitchStartupProject\Properties\AssemblyInfoVersion.cs 'Version = "([0-9\\.]+)"' 'Version = "{version}"'
+  - ps: Vsix-TokenReplacement SwitchStartupProject17\Properties\AssemblyInfoVersion.cs 'Version = "([0-9\\.]+)"' 'Version = "{version}"'
+  - ps: Vsix-TokenReplacement SwitchStartupProject\SwitchStartupProject.csproj '<AssemblyName>SwitchStartupProject_VS2019</AssemblyName>' '<AssemblyName>SwitchStartupProject_VS2019_{version}</AssemblyName>'
+  - ps: Vsix-TokenReplacement SwitchStartupProject17\SwitchStartupProject17.csproj '<AssemblyName>SwitchStartupProject_VS2022</AssemblyName>' '<AssemblyName>SwitchStartupProject_VS2022_{version}</AssemblyName>'
+
+build_script:
+  - nuget restore -Verbosity quiet
+  - msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
+
+after_test:
+  - ps: Vsix-PushArtifacts | Vsix-PublishToGallery

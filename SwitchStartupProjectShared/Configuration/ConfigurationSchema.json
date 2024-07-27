@@ -1,0 +1,64 @@
+﻿{
+  "title": "SwitchStartupProject configuration file schema",
+  "type": "object",
+  "properties": {
+    "Version": {
+      "type": "integer"
+    },
+    "ListAllProjects": {
+      "description": "If true, each project in the solution is added to the dropdown list",
+      "type": "boolean"
+    },
+    "MultiProjectConfigurations": {
+      "description": "Dictionary of multi-project startup configurations",
+      "type": "object",
+      "additionalProperties": {
+        "description": "Property name is the name of a multi-project configuration which will be added to the dropdown list",
+        "type": "object",
+        "properties": {
+          "BeginGroup": {
+            "description": "If true, a separator is added before this configuration in the dropdown list",
+            "type": "boolean"
+          },
+          "Projects": {
+            "description": "Dictionary of projects to be started",
+            "type": "object",
+            "additionalProperties": {
+              "description": "Property name is the name of a project",
+              "type": "object",
+              "properties": {
+                "CommandLineArguments": {
+                  "description": "Optional command line arguments",
+                  "type": "string"
+                },
+                "WorkingDirectory": {
+                  "description": "Optional working directory",
+                  "type": "string"
+                },
+                "StartExternalProgram": {
+                  "description": "Optional path to external program to run when debugging",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "SolutionConfiguration": {
+            "description": "Optional name of solution configuration (e.g. 'Debug' or 'Release') to be activated",
+            "type": "string"
+          },
+          "SolutionPlatform": {
+            "description": "Optional name of solution platform (e.g. 'Any CPU' or 'x64') to be activated",
+            "type": "string"
+          }
+        },
+        "required": [
+          "Projects"
+        ]
+      }
+    }
+  },
+  "required": [
+    "ListAllProjects",
+    "MultiProjectConfigurations"
+  ]
+}
