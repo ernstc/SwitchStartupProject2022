@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Domain\SolutionProject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\StartupConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DropdownService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Guids.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumerableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalSuppressions.cs" />

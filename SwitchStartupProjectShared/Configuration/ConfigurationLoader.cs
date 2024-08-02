@@ -126,7 +126,7 @@ namespace SwitchStartupProject
             var sb = new StringBuilder();
             sb.AppendLine("/*");
             sb.AppendLine("    This is a configuration file for the SwitchStartupProject Visual Studio Extension");
-            sb.AppendLine("    See https://heptapod.host/thirteen/switchstartupproject/blob/branch/current/Configuration.md");
+            sb.AppendLine("    See https://github.com/ernstc/SwitchStartupProject2022/blob/main/Configuration.md");
             sb.AppendLine("*/");
             sb.AppendLine("{");
             sb.AppendLine("    /*  Configuration File Version  */");
@@ -162,6 +162,7 @@ namespace SwitchStartupProject
             sb.AppendLine("            }");
             sb.AppendLine("          },");
             sb.AppendLine("          \"D (Debug x86)\": {");
+            sb.AppendLine("            \"" + beginGroupKey + "\": true,");
             sb.AppendLine("            \"" + projectsKey + "\": {");
             sb.AppendLine("              \"MyProjectD\": {}");
             sb.AppendLine("            },");

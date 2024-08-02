@@ -111,6 +111,7 @@ namespace SwitchStartupProject
             await _LoadConfigurationAndPopulateDropdownAsync();
             // Determine the last active startup configuration and select it in the dropdown
             dropdownService.CurrentDropdownValue = solution.ActiveConfigurationLoader.Load(dropdownService.DropdownList);
+            dropdownService.DropdownEnabled = true;
         }
 
         public void BeforeCloseSolution()
@@ -129,9 +130,8 @@ namespace SwitchStartupProject
             ThreadHelper.ThrowIfNotOnUIThread();
             // When solution is closed: choose no project
             dropdownService.OnConfigurationSelected = _ShowMsgOpenSolution;
-            dropdownService.CurrentDropdownValue = null;
+            dropdownService.Reset();
             solution = null;
-            dropdownService.DropdownList = null;
         }
 
         public void OpenProject(IVsHierarchy pHierarchy, bool isCreated)

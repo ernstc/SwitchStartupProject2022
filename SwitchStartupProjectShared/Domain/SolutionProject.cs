@@ -46,7 +46,10 @@ namespace SwitchStartupProject
             var projectTypeGuids = _GetProjectTypeGuids(hierarchy, project).ToList();
 
             // Filter out hierarchy elements that don't represent projects (e.g. solution folders)
-            if (name == null || projectTypeGuids.Contains(GuidList.guidSolutionFolder) || projectTypeGuids.Contains(GuidList.guidMiscFiles)) return null;
+            if (name == null 
+                || projectTypeGuids.Contains(GuidList.guidSolutionFolder)
+                || projectTypeGuids.Contains(GuidList.guidMiscFiles)
+                || projectTypeGuids.Contains(GuidList.guidSharedProject)) return null;
 
             return new SolutionProject(hierarchy, project, name, projectTypeGuids, solutionFullName);
         }
@@ -89,7 +92,15 @@ namespace SwitchStartupProject
             }
             else
             {
-                projectTypeGuids = new[] { new Guid(project.Kind) };
+                var extension = System.IO.Path.GetExtension(project.FullName);
+                if (extension.Equals(ExtensionsList.extensionSharedProject, StringComparison.OrdinalIgnoreCase))
+                {
+                    projectTypeGuids = new[] { GuidList.guidSharedProject, new Guid(project.Kind) };
+                }
+                else
+                {
+                    projectTypeGuids = new[] { new Guid(project.Kind) };
+                }
             }
             return projectTypeGuids;
         }

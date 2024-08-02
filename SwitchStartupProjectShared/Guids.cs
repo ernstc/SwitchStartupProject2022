@@ -21,5 +21,6 @@ namespace SwitchStartupProject
 
         public static readonly Guid guidSolutionFolder = new Guid("{2150e333-8fdc-42a3-9474-1a3956d46de8}");
         public static readonly Guid guidMiscFiles = new Guid(EnvDTE.Constants.vsProjectKindMisc);
+        public static readonly Guid guidSharedProject = new Guid("{d954291e-2a0b-460d-934e-dc6b0785db48}");
     };
 }

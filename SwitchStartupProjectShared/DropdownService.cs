@@ -44,7 +44,7 @@ namespace SwitchStartupProject
 
         public static IDropdownEntry OtherItem { get; } = new OtherDropdownEntry("<other>");
 
-        public static IDropdownEntry SeparatorItem { get; } = new OtherDropdownEntry("————————————————————");
+        public static IDropdownEntry SeparatorItem { get; } = new OtherDropdownEntry(" ");
 
         public IDropdownEntry CurrentDropdownValue
         {
@@ -58,7 +58,10 @@ namespace SwitchStartupProject
             set
             {
                 dropdownList = value ?? new List<IDropdownEntry>();
-                dropdownList.Add(SeparatorItem);
+                if (DropdownList.Contains(SeparatorItem))
+                {
+                    dropdownList.Add(SeparatorItem);
+                }
                 dropdownList.Add(configure);
             }
         }
@@ -73,6 +76,12 @@ namespace SwitchStartupProject
 
         public Func<IDropdownEntry, Task> OnListItemSelectedAsync { get; set; }
 
+        public void Reset()
+        {
+            dropdownList = new List<IDropdownEntry>();
+            CurrentDropdownValue = null;
+            dropdownCommand.Enabled = false;
+        }
 
 
         private void _HandleDropdownCommand(object sender, EventArgs e)

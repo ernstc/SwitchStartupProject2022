@@ -1,5 +1,9 @@
 # Release notes
 
+## Version 4.4
+* Skip Shared Project because they cannot be started.
+* Disable the drop down when the solution is closed.
+
 ## Version 4.3
 * Add support for Visual Studio 2022 for ARM64
 * Add boolean property `BeginGroup` in the multi-targeting projects for grouping configurations.
