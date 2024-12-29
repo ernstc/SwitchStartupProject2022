@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="db7fbd4b-fc87-43d0-b57d-c7fbd8c48139" Version="4.4" Language="en-US" Publisher="Ernesto Cianciotta" />
+        <Identity Id="db7fbd4b-fc87-43d0-b57d-c7fbd8c48139" Version="4.4.1" Language="en-US" Publisher="Ernesto Cianciotta" />
         <DisplayName>Switch Startup Project 2022</DisplayName>
         <Description xml:space="preserve">Provides a toolbar dropdown box to switch between startup projects.
 This release is for Visual Studio 2022 and for platforms x64 and Arm64.</Description>
